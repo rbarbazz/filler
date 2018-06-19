@@ -6,23 +6,15 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/19 10:38:52 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/06/14 14:17:31 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/06/19 13:30:58 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 21sh
+NAME = rbarbazz.filler
 
 SRC_PATH = src
 
-SRC_NAME = core/main.c core/read_split_exec.c core/get_env.c core/binaries.c\
-		   core/clear.c core/prompt.c core/tools.c \
-		   core/signal.c core/signal_set.c core/error.c\
-		   parser/tilde.c parser/parser.c\
-		   cli/cli.c cli/cursor_motion.c cli/backspace.c\
-		   builtin/builtin.c builtin/echo.c builtin/cd/cd.c builtin/cd/cd_env.c\
-		   builtin/env/env.c builtin/env/setenv.c builtin/env/unsetenv.c\
-		   builtin/env/mkenv.c builtin/exit.c\
-		   term/term_commands.c term/term_init.c term/term_settings.c
+SRC_NAME = main.c
 
 OBJ_PATH = obj
 
@@ -50,10 +42,10 @@ $(LIB):
 	make -C libft
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -ltermcap -o $@
+	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir -p obj/core obj/parser obj/cli obj/term obj/builtin/cd obj/builtin/env
+	@mkdir -p obj
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 norme:
