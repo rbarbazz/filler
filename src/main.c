@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:22:39 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/20 10:14:08 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:38:31 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ int			main(int argc, char **argv)
 	{}
 	fill = get_fill();
 	fill->p = get_p_number();
-	ft_dprintf(STDERR_FILENO, "player %d\n", fill->p);
-	fill->plateau = get_map();
-	ft_dprintf(STDERR_FILENO, "plateau :\n%s", fill->plateau);
-	fill->piece = get_piece();
-	ft_dprintf(STDERR_FILENO, "piece :\n%s", fill->piece);
-	while (1)
-	{}
+//	while (1)
+//	{
+		fill->plateau = get_map();
+		ft_dprintf(STDERR_FILENO, "%s\n", fill->plateau[12]);
+		fill->piece = get_piece();
+//	}
 	return (0);
 }

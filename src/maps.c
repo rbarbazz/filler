@@ -6,62 +6,71 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 09:03:12 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/20 09:24:41 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:39:40 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-char	*case_100(void)
+char	**case_100(void)
 {
-	char	map[10605];
+	char	**map;
 	char	*line;
 	int		i;
 
-	i = 101;
-	ft_bzero(map, 10605);
-	while (i-- > 0)
+	i = 0;
+	get_next_line(STDIN_FILENO, &line);
+	ft_strdel(&line);
+	if (!(map = (char**)ft_memalloc(sizeof(char*) * 101)))
+		return (NULL);
+	while (i < 100)
 	{
 		get_next_line(STDIN_FILENO, &line);
-		ft_strcat(map, line);
-		ft_strcat(map, "\n");
+		map[i] = ft_strdup(line + 4);
 		ft_strdel(&line);
+		i++;
 	}
-	return (ft_strdup(map));
+	return (map);
 }
 
-char	*case_24(void)
+char	**case_24(void)
 {
-	char	map[1151];
+	char	**map;
 	char	*line;
 	int		i;
 
-	i = 25;
-	ft_bzero(map, 1151);
-	while (i-- > 0)
+	i = 0;
+	get_next_line(STDIN_FILENO, &line);
+	ft_strdel(&line);
+	if (!(map = (char**)ft_memalloc(sizeof(char*) * 25)))
+		return (NULL);
+	while (i < 24)
 	{
 		get_next_line(STDIN_FILENO, &line);
-		ft_strcat(map, line);
-		ft_strcat(map, "\n");
+		map[i] = ft_strdup(line + 4);
 		ft_strdel(&line);
+		i++;
 	}
-	return (ft_strdup(map));
+	return (map);
 }
 
-char	*case_15(void)
+char	**case_15(void)
 {
-	char	map[370];
+	char	**map;
 	char	*line;
 	int		i;
 
-	i = 16;
-	ft_bzero(map, 370);
-	while (i-- > 0)
+	i = 0;
+	get_next_line(STDIN_FILENO, &line);
+	ft_strdel(&line);
+	if (!(map = (char**)ft_memalloc(sizeof(char*) * 16)))
+		return (NULL);
+	while (i < 15)
 	{
 		get_next_line(STDIN_FILENO, &line);
-		ft_strcat(map, line);
-		ft_strcat(map, "\n");
+		map[i] = ft_strdup(line + 4);
 		ft_strdel(&line);
+		i++;
 	}
-	return (ft_strdup(map));
+	return (map);
 }
