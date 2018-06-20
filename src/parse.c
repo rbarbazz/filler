@@ -6,31 +6,33 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/20 22:35:48 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:48:32 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-char		*read_piece(t_coord *size_piece)
+char		**read_piece(t_coord *size_piece)
 {
-	char	piece[size_piece->x * (size_piece->y + 1)];
+	char	**piece;
 	char	*line;
 	int		i;
 
-	i = size_piece->x;
-	ft_bzero(piece, size_piece->x * (size_piece->y + 1));
-	while (i-- > 0)
+	i = 0;
+	if (!(piece = (char**)ft_memalloc(sizeof(char*) * (size_piece->x + 1))))
+		return (NULL);
+	while (i < size_piece->x)
 	{
 		get_next_line(STDIN_FILENO, &line);
-		ft_strcat(piece, line);
-		ft_strcat(piece, "\n");
+		piece[i] = ft_strdup(line);
 		ft_strdel(&line);
+		i++;
 	}
-	return (ft_strdup(piece));
+	piece[i] = NULL;
+	return (piece);
 }
 
-char		*get_piece(void)
+char		**get_piece(void)
 {
 	char	*line;
 	char	**size;

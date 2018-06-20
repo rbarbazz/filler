@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 09:03:12 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/20 22:39:40 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:44:54 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	**case_100(void)
 		ft_strdel(&line);
 		i++;
 	}
+	map[i] = NULL;
 	return (map);
 }
 
@@ -51,6 +52,7 @@ char	**case_24(void)
 		ft_strdel(&line);
 		i++;
 	}
+	map[i] = NULL;
 	return (map);
 }
 
@@ -72,5 +74,6 @@ char	**case_15(void)
 		ft_strdel(&line);
 		i++;
 	}
+	map[i] = NULL;
 	return (map);
 }
