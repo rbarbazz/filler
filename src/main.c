@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:22:39 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/22 18:57:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/22 21:06:25 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,11 @@ t_fill		*get_fill(void)
 	return (&fill);
 }
 
-int			main(int argc, char **argv)
+int			main(void)
 {
 	t_fill	*fill;
 
 //check if program is used as argument
-	if (argc != 1)
-		return (-1);
-	if (argv[0])
-	{}
 	fill = get_fill();
 	fill->player = get_player_char();
 	while (1)
@@ -35,7 +31,10 @@ int			main(int argc, char **argv)
 		fill->plateau = get_map();
 		fill->piece = get_piece();
 		if (place_piece())
+		{
+
 			break ;
+		}
 		strstr_free(fill->plateau);
 		strstr_free(fill->piece);
 		ft_printf("%d %d\n", fill->coord_next.y, fill->coord_next.x);

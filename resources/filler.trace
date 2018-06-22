@@ -1,6 +1,5 @@
-seed = 5354
-X: error on input
-../rbarbazz.filler: Segfault at 101
-../rbarbazz.filler won
+seed = 8913
+O: error on input
+players/abanlin.filler won
 Score:
-56AGAINST101
+44AGAINST114
