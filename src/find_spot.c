@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 21:15:17 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/22 18:16:17 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:56:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		test_position(t_coord coord_next)
 		{
 			if (fill->piece[yy][xx] == '*' && (fill->plateau[coord_next.y + yy][coord_next.x + xx] == fill->player || fill->plateau[coord_next.y + yy][coord_next.x + xx] == fill->player + 32))
 				test++;
-			if (fill->piece[yy][xx] == '*' && (fill->plateau[coord_next.y + yy][coord_next.x + xx] == fill->advers || fill->plateau[coord_next.y + yy][coord_next.x + xx] == fill->advers + 32))
+			else if (fill->piece[yy][xx] == '*' && fill->plateau[coord_next.y + yy][coord_next.x + xx] != '.')
 				return (0);
 			xx++;
 		}
@@ -39,24 +39,23 @@ static int		test_position(t_coord coord_next)
 	return (test);
 }
 
-t_coord			place_piece(void)
+int			place_piece(void)
 {
-	t_coord	coord_next;
 	t_fill	*fill;
 
 	fill = get_fill();
-	coord_next.x = 0;
-	coord_next.y = 0;
-	while (coord_next.y < fill->size_map.y)
+	fill->coord_next.x = 0;
+	fill->coord_next.y = 0;
+	while (fill->coord_next.y < fill->size_map.y)
 	{
-		coord_next.x = 0;
-		while (coord_next.x < fill->size_map.x)
+		fill->coord_next.x = 0;
+		while (fill->coord_next.x < fill->size_map.x)
 		{
-			if (test_position(coord_next) == 1)
-				return (coord_next);
-			coord_next.x++;
+			if (test_position(fill->coord_next) == 1)
+				return (0);
+			fill->coord_next.x++;
 		}
-		coord_next.y++;
+		fill->coord_next.y++;
 	}
-	return (coord_next);
+	return (1);
 }

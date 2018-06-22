@@ -1,4 +1,6 @@
-seed = 7222
-players/carli.filler won
+seed = 5354
+X: error on input
+../rbarbazz.filler: Segfault at 101
+../rbarbazz.filler won
 Score:
-53AGAINST293
+56AGAINST101

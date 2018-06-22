@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/22 18:13:16 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:56:08 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ char			**get_piece(void);
 ** algo
 */
 
-t_coord			place_piece(void);
+int			place_piece(void);
 
 #endif

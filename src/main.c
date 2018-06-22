@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:22:39 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/22 18:16:42 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:57:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@ int			main(int argc, char **argv)
 	{
 		fill->plateau = get_map();
 		fill->piece = get_piece();
-		fill->coord_next = place_piece();
+		if (place_piece())
+			break ;
+		strstr_free(fill->plateau);
+		strstr_free(fill->piece);
 		ft_printf("%d %d\n", fill->coord_next.y, fill->coord_next.x);
 	}
+	strstr_free(fill->plateau);
+	strstr_free(fill->piece);
 	return (0);
 }
