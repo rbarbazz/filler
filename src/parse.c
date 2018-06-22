@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/20 22:48:32 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:13:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char		**read_piece(t_coord *size_piece)
 	int		i;
 
 	i = 0;
-	if (!(piece = (char**)ft_memalloc(sizeof(char*) * (size_piece->x + 1))))
+	if (!(piece = (char**)ft_memalloc(sizeof(char*) * (size_piece->y + 1))))
 		return (NULL);
-	while (i < size_piece->x)
+	while (i < size_piece->y)
 	{
 		get_next_line(STDIN_FILENO, &line);
 		piece[i] = ft_strdup(line);
@@ -41,8 +41,8 @@ char		**get_piece(void)
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
 	size = ft_strsplit_whitespace(line);
-	fill->size_piece.x = ft_atoi(size[1]);
-	fill->size_piece.y = ft_atoi(size[2]);
+	fill->size_piece.y = ft_atoi(size[1]);
+	fill->size_piece.x = ft_atoi(size[2]);
 	return (read_piece(&fill->size_piece));
 }
 
@@ -73,16 +73,20 @@ char		**get_map(void)
 	return (case_100());
 }
 
-char			get_p_number(void)
+char			get_player_char(void)
 {
 	char	*line;
+	t_fill	*fill;
 
+	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
 	if (ft_strchr(line, '1'))
 	{
+		fill->advers = 'X';
 		ft_strdel(&line);
 		return ('O');
 	}
+	fill->advers = 'O';
 	ft_strdel(&line);
 	return ('X');
 }

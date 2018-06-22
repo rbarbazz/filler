@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/19 10:38:52 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/06/20 09:03:33 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/06/22 17:51:24 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = rbarbazz.filler
 
 SRC_PATH = src
 
-SRC_NAME =	main.c parse.c maps.c
+SRC_NAME =	main.c parse.c maps.c find_spot.c
 
 OBJ_PATH = obj
 
