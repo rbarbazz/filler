@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/22 21:33:26 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/26 14:55:26 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char		**read_piece(t_coord *size_piece)
 	return (piece);
 }
 
-char		**get_piece(void)
+int			get_piece(void)
 {
 	char	*line;
 	char	**size;
@@ -41,52 +41,65 @@ char		**get_piece(void)
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
 	size = ft_strsplit_whitespace(line);
+	if (!ft_strstr(size[0], "Piece") || !size[1] || !size[2] || !ft_isdigit(size[1][0]) || !ft_isdigit(size[2][0]))
+	{
+		strstr_free(size);
+		return (fill->ret = 1);
+	}
 	fill->size_piece.y = ft_atoi(size[1]);
 	fill->size_piece.x = ft_atoi(size[2]);
-	return (read_piece(&fill->size_piece));
+	fill->piece = read_piece(&fill->size_piece);
+	strstr_free(size);
+	return (fill->ret);
 }
 
-char		**get_map(void)
+int			get_map(void)
 {
 	char	*line;
 	t_fill	*fill;
 
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
-	if (ft_strstr(line, "15"))
+	if (ft_strstr(line, "Plateau 15 17:") && (fill->plateau = (case_15())))
 	{
 		fill->size_map.x = 17;
 		fill->size_map.y = 15;
-		ft_strdel(&line);
-		return (case_15());
 	}
-	else if (ft_strstr(line, "24"))
+	else if (ft_strstr(line, "Plateau 24 40:") && (fill->plateau = (case_24())))
 	{
 		fill->size_map.x = 40;
 		fill->size_map.y = 24;
-		ft_strdel(&line);
-		return (case_24());
 	}
-	fill->size_map.x = 99;
-	fill->size_map.y = 100;
+	else if (ft_strstr(line, "Plateau 100 99:") && (fill->plateau = (case_100())))
+	{
+		fill->size_map.x = 99;
+		fill->size_map.y = 100;
+	}
+	else
+		fill->ret = 1;
 	ft_strdel(&line);
-	return (case_100());
+	return (fill->ret);
 }
 
-char			get_player_char(void)
+int			get_player_char(void)
 {
 	char	*line;
 	t_fill	*fill;
 
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
-	if (ft_strchr(line, '1'))
+	if (ft_strstr(line, "$$$ exec p1 :"))
 	{
+		fill->player = 'O';
 		fill->advers = 'X';
-		ft_strdel(&line);
-		return ('O');
 	}
-	fill->advers = 'O';
+	else if (ft_strstr(line, "$$$ exec p2 :"))
+	{
+		fill->player = 'X';
+		fill->advers = 'O';
+	}
+	else
+		fill->ret = 1;
 	ft_strdel(&line);
-	return ('X');
+	return (fill->ret);
 }

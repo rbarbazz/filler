@@ -1,4 +1,6 @@
-seed = 8066
-../rbarbazz.filler won
+seed = 2040
+O: error on input
+../rbarbazz.filler: Segfault at 80
+players/grati.filler won
 Score:
-91AGAINST76
+80AGAINST85
