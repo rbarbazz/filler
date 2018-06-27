@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/26 14:17:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/27 14:35:54 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef	struct	s_fill
 	char		**piece;
 	t_coord		size_piece;
 	t_coord		size_map;
-	t_coord		coord_next;
+	t_coord		next;
 	int			ret;
 }				t_fill;
 

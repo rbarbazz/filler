@@ -1,0 +1,2 @@
+darling shell ./filler_vm -f maps/map00 -p1 ../rbarbazz.filler -p2 players/abanlin.filler 1>out.txt 2>err.txt
+cp ../rbarbazz.filler ./players
