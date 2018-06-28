@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/27 15:30:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/28 13:56:35 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef	struct	s_fill
 	int			match;
 }				t_fill;
 
-t_fill		*get_fill(void);
+t_fill			*get_fill(void);
 
 /*
 ** parsing
@@ -52,6 +52,6 @@ int				get_piece(void);
 ** algo
 */
 
-int			place_piece(void);
+int				place_piece(void);
 
 #endif

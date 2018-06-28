@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/26 14:55:26 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/28 13:55:58 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int			get_piece(void)
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
 	size = ft_strsplit_whitespace(line);
-	if (!ft_strstr(size[0], "Piece") || !size[1] || !size[2] || !ft_isdigit(size[1][0]) || !ft_isdigit(size[2][0]))
+	if (!ft_strstr(size[0], "Piece") || !size[1] || !size[2] ||\
+	!ft_isdigit(size[1][0]) || !ft_isdigit(size[2][0]))
 	{
 		strstr_free(size);
 		return (fill->ret = 1);
@@ -70,7 +71,8 @@ int			get_map(void)
 		fill->size_map.x = 40;
 		fill->size_map.y = 24;
 	}
-	else if (ft_strstr(line, "Plateau 100 99:") && (fill->plateau = (case_100())))
+	else if (ft_strstr(line, "Plateau 100 99:") &&\
+	(fill->plateau = (case_100())))
 	{
 		fill->size_map.x = 99;
 		fill->size_map.y = 100;
