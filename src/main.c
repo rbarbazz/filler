@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:22:39 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 12:52:50 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 16:10:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,31 @@ t_fill		*get_fill(void)
 	return (&fill);
 }
 
+static int	algo(void)
+{
+	t_fill	*fill;
+	int		ret;
+
+	fill = get_fill();
+	fill->call++;
+	if (fill->size_map.y == 15 && fill->player == 'O' && (fill->call % 2))
+		ret = place_bot_right();
+	else if (fill->size_map.y == 15 && fill->player == 'O')
+		ret = place_top_right();
+	else if (fill->player == 'O')
+		ret = place_bot_left();
+	else
+		ret = place_top_left();
+	return (ret);
+}
+
 int			main(void)
 {
 	t_fill	*fill;
 
 	fill = get_fill();
 	fill->ret = 0;
+	fill->call = 0;
 	if (get_player_char() == 1)
 		return (-1);
 	while (1)

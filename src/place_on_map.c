@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_spot.c                                        :+:      :+:    :+:   */
+/*   place_on_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 21:15:17 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 13:05:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 16:12:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static int		test_position(t_coord next, char **map, char **piece)
+int		test_position(t_coord next, char **map, char **piece)
 {
 	int		xx;
 	int		yy;
@@ -41,7 +41,7 @@ static int		test_position(t_coord next, char **map, char **piece)
 	return (fill->match);
 }
 
-int				place_top_left(void)
+int		place_top_left(void)
 {
 	t_fill	*fill;
 
@@ -62,7 +62,28 @@ int				place_top_left(void)
 	return (1);
 }
 
-int				place_bot_right(void)
+int		place_bot_left(void)
+{
+	t_fill	*fill;
+
+	fill = get_fill();
+	fill->next.x = -1 * fill->size_map.x;
+	fill->next.y = fill->size_map.y - 1;
+	while (fill->next.y > -1 * fill->size_map.y)
+	{
+		fill->next.x = -1 * fill->size_map.x;
+		while (fill->next.x < fill->size_map.x)
+		{
+			if (test_position(fill->next, fill->plateau, fill->piece) == 1)
+				return (0);
+			fill->next.x++;
+		}
+		fill->next.y--;
+	}
+	return (1);
+}
+
+int		place_bot_right(void)
 {
 	t_fill	*fill;
 
@@ -83,15 +104,23 @@ int				place_bot_right(void)
 	return (1);
 }
 
-int				algo(void)
+int		place_top_right(void)
 {
 	t_fill	*fill;
-	int		ret;
 
 	fill = get_fill();
-	if (fill->player == 'O')
-		ret = place_bot_right();
-	else
-		ret = place_top_left();
-	return (ret);
+	fill->next.x = fill->size_map.x - 1;
+	fill->next.y = -1 * fill->size_map.y;
+	while (fill->next.y < fill->size_map.y)
+	{
+		fill->next.x = fill->size_map.x - 1;
+		while (fill->next.x > -1 * fill->size_map.x)
+		{
+			if (test_position(fill->next, fill->plateau, fill->piece) == 1)
+				return (0);
+			fill->next.x--;
+		}
+		fill->next.y++;
+	}
+	return (1);
 }

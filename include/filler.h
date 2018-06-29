@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 13:11:40 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 16:12:31 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef	struct	s_fill
 	t_coord		size_map;
 	t_coord		next;
 	int			ret;
+	int			call;
 	int			match;
 }				t_fill;
 
@@ -52,8 +53,10 @@ int				get_piece(void);
 ** algo
 */
 
-int				algo(void);
+int				test_position(t_coord next, char **map, char **piece);
 int				place_top_left(void);
+int				place_bot_left(void);
+int				place_top_right(void);
 int				place_bot_right(void);
 
 #endif
