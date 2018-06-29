@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 16:12:31 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 16:43:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ t_fill			*get_fill(void);
 
 int				get_player_char(void);
 int				get_map(void);
-char			**case_15(void);
-char			**case_24(void);
-char			**case_100(void);
+char			**map_15(void);
+char			**map_24(void);
+char			**map_100(void);
 int				get_piece(void);
 
 /*
 ** algo
 */
 
+int				algo(void);
 int				test_position(t_coord next, char **map, char **piece);
 int				place_top_left(void);
 int				place_bot_left(void);

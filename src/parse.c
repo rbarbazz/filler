@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/28 13:55:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 16:43:13 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,18 @@ int			get_map(void)
 
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
-	if (ft_strstr(line, "Plateau 15 17:") && (fill->plateau = (case_15())))
+	if (ft_strstr(line, "Plateau 15 17:") && (fill->plateau = (map_15())))
 	{
 		fill->size_map.x = 17;
 		fill->size_map.y = 15;
 	}
-	else if (ft_strstr(line, "Plateau 24 40:") && (fill->plateau = (case_24())))
+	else if (ft_strstr(line, "Plateau 24 40:") && (fill->plateau = (map_24())))
 	{
 		fill->size_map.x = 40;
 		fill->size_map.y = 24;
 	}
 	else if (ft_strstr(line, "Plateau 100 99:") &&\
-	(fill->plateau = (case_100())))
+	(fill->plateau = (map_100())))
 	{
 		fill->size_map.x = 99;
 		fill->size_map.y = 100;

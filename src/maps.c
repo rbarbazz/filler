@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 09:03:12 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/28 13:53:51 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 16:42:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-char	**case_100(void)
+char	**map_100(void)
 {
 	char	**map;
 	char	*line;
@@ -34,7 +34,7 @@ char	**case_100(void)
 	return (map);
 }
 
-char	**case_24(void)
+char	**map_24(void)
 {
 	char	**map;
 	char	*line;
@@ -56,7 +56,7 @@ char	**case_24(void)
 	return (map);
 }
 
-char	**case_15(void)
+char	**map_15(void)
 {
 	char	**map;
 	char	*line;
