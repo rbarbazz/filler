@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 21:15:17 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 12:08:43 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 12:41:57 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int		test_position(t_coord next, char **map, char **piece)
 		while (xx < fill->size_piece.x)
 		{
 			if (piece[yy][xx] == '*' && (next.y + yy > fill->size_map.y - 1 ||\
-			next.x + xx > fill->size_map.x - 1 || map[next.y + yy][next.x +\
-			xx] == fill->advers))
+			next.x + xx > fill->size_map.x - 1 || next.y + yy < 0 || next.x +\
+			xx < 0 || map[next.y + yy][next.x + xx] == fill->advers))
 				return (0);
-			else if (piece[yy][xx] == '*' && (map[next.y + yy][next.x + xx] ==\
-			fill->player || map[next.y + yy][next.x + xx] == fill->player + 32))
+			else if (piece[yy][xx] == '*' && map[next.y + yy][next.x + xx] ==\
+			fill->player)
 				fill->match++;
 			xx++;
 		}
@@ -46,13 +46,14 @@ int				place_piece(void)
 	t_fill	*fill;
 
 	fill = get_fill();
-	fill->next.x = 0;
-	fill->next.y = 0;
+	fill->next.x = -1 * fill->size_map.x;
+	fill->next.y = -1 * fill->size_map.y;
 	while (fill->next.y < fill->size_map.y)
 	{
-		fill->next.x = 0;
+		fill->next.x = -1 * fill->size_map.x;
 		while (fill->next.x < fill->size_map.x)
 		{
+			ft_dprintf(STDERR_FILENO, "%d %d\n", fill->next.y, fill->next.x);
 			if (test_position(fill->next, fill->plateau, fill->piece) == 1)
 				return (0);
 			fill->next.x++;
