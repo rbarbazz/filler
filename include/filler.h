@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/28 13:56:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 13:11:40 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int				get_piece(void);
 ** algo
 */
 
-int				place_piece(void);
+int				algo(void);
+int				place_top_left(void);
+int				place_bot_right(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 21:15:17 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 12:44:34 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 13:05:01 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int		test_position(t_coord next, char **map, char **piece)
 	return (fill->match);
 }
 
-int				place_piece(void)
+int				place_top_left(void)
 {
 	t_fill	*fill;
 
@@ -60,4 +60,38 @@ int				place_piece(void)
 		fill->next.y++;
 	}
 	return (1);
+}
+
+int				place_bot_right(void)
+{
+	t_fill	*fill;
+
+	fill = get_fill();
+	fill->next.x = fill->size_map.x - 1;
+	fill->next.y = fill->size_map.y - 1;
+	while (fill->next.y > -1 * fill->size_map.y)
+	{
+		fill->next.x = fill->size_map.x - 1;
+		while (fill->next.x > -1 * fill->size_map.x)
+		{
+			if (test_position(fill->next, fill->plateau, fill->piece) == 1)
+				return (0);
+			fill->next.x--;
+		}
+		fill->next.y--;
+	}
+	return (1);
+}
+
+int				algo(void)
+{
+	t_fill	*fill;
+	int		ret;
+
+	fill = get_fill();
+	if (fill->player == 'O')
+		ret = place_bot_right();
+	else
+		ret = place_top_left();
+	return (ret);
 }
