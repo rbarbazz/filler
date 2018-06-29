@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 21:15:17 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 12:41:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/06/29 12:44:34 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int				place_piece(void)
 		fill->next.x = -1 * fill->size_map.x;
 		while (fill->next.x < fill->size_map.x)
 		{
-			ft_dprintf(STDERR_FILENO, "%d %d\n", fill->next.y, fill->next.x);
 			if (test_position(fill->next, fill->plateau, fill->piece) == 1)
 				return (0);
 			fill->next.x++;
