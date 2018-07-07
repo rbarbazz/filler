@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 16:36:18 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/06 09:27:48 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/06 22:29:17 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static int	case_15(void)
 
 	fill = get_fill();
 	if (fill->player == 'O' && (fill->call % 2))
-		return (place_top_right());
-	else if (fill->player == 'O')
 		return (place_bot_right());
-	return (place_top_left());
+	return (place_top_right());
 }
 
 static int	case_24(void)
@@ -58,11 +56,13 @@ int			algo(void)
 	int		ret;
 
 	fill = get_fill();
+	ret = 1;
 	fill->call++;
 	if (fill->size_map.y == 15)
 		ret = case_15();
 	else if (fill->size_map.y == 24)
 		ret = case_24();
-	ret = case_100();
+	else if (fill->size_map.y == 100)
+		ret = case_100();
 	return (ret);
 }

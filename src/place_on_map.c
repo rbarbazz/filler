@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 21:15:17 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 16:12:19 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/06 22:30:13 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int		test_position(t_coord next, char **map, char **piece)
 		xx = 0;
 		while (xx < fill->size_piece.x)
 		{
-			if (piece[yy][xx] == '*' && (next.y + yy > fill->size_map.y - 1 ||\
-			next.x + xx > fill->size_map.x - 1 || next.y + yy < 0 || next.x +\
+			if (piece[yy][xx] == '*' && (next.y + yy > fill->size_map.y - 1 ||
+			next.x + xx > fill->size_map.x - 1 || next.y + yy < 0 || next.x +
 			xx < 0 || map[next.y + yy][next.x + xx] == fill->advers))
 				return (0);
-			else if (piece[yy][xx] == '*' && map[next.y + yy][next.x + xx] ==\
+			else if (piece[yy][xx] == '*' && map[next.y + yy][next.x + xx] ==
 			fill->player)
 				fill->match++;
 			xx++;
