@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 16:43:13 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/14 09:16:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int			get_piece(void)
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
 	size = ft_strsplit_whitespace(line);
+	ft_strdel(&line);
 	if (!ft_strstr(size[0], "Piece") || !size[1] || !size[2] ||\
 	!ft_isdigit(size[1][0]) || !ft_isdigit(size[2][0]))
 	{
@@ -49,8 +50,8 @@ int			get_piece(void)
 	}
 	fill->size_piece.y = ft_atoi(size[1]);
 	fill->size_piece.x = ft_atoi(size[2]);
-	fill->piece = read_piece(&fill->size_piece);
 	strstr_free(size);
+	fill->piece = read_piece(&fill->size_piece);
 	return (fill->ret);
 }
 
