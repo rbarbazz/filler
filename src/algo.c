@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 16:36:18 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/06 22:58:33 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/14 08:37:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static int	case_24(void)
 	t_fill	*fill;
 
 	fill = get_fill();
-	if (fill->player == 'O' && (fill->call % 2))
+	if (fill->player == 'O' && (fill->call < 25))
 		return (place_bot_right());
 	else if (fill->player == 'O')
-		return (place_bot_left());
-	else if (fill->player == 'X' && (fill->call % 2))
+		return (place_top_right());
+	else if (fill->player == 'X' && (fill->call < 25))
 		return (place_top_left());
-	return (place_top_right());
+	return (place_bot_left());
 }
 
 static int	case_100(void)
