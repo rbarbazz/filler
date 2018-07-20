@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/19 23:40:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/20 00:45:53 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int			get_map(void)
 	fill->size_map.y = ft_atoi(split_line[1]);
 	strstr_free(split_line);
 	fill->plateau = read_map();
+	if (!fill->call)
+		get_player_pos();
 	return (fill->ret);
 }
 

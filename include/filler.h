@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/19 23:35:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/20 00:26:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_coord
 typedef	struct	s_fill
 {
 	char		player;
+	t_coord		player_pos;
 	char		advers;
 	char		**plateau;
 	char		**piece;
@@ -43,6 +44,7 @@ t_fill			*get_fill(void);
 */
 
 int				get_player_char(void);
+void			get_player_pos(void);
 int				get_map(void);
 char			**read_map(void);
 int				get_piece(void);

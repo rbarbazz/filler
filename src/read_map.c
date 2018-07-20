@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maps.c                                             :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 09:03:12 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/19 23:34:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/20 00:42:35 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-char	**read_map(void)
+void		get_player_pos(void)
+{
+	t_fill	*fill;
+
+	fill = get_fill();
+	fill->player_pos.y = 0;
+	while (fill->player_pos.y < fill->size_map.y)
+	{
+		fill->player_pos.x = 0;
+		while (fill->player_pos.x < fill->size_map.x)
+		{
+			if (fill->plateau[fill->player_pos.y][fill->player_pos.x] == fill->player)
+				return ;
+			fill->player_pos.x++;
+		}
+		fill->player_pos.y++;
+	}
+}
+
+char		**read_map(void)
 {
 	char	**map;
 	char	*line;

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:22:39 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/06 22:30:24 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/20 00:40:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			main(void)
 
 	fill = get_fill();
 	fill->ret = 0;
-	fill->call = 1;
+	fill->call = 0;
 	if (get_player_char() == 1)
 		return (-1);
 	while (1)
