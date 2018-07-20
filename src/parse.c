@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 08:25:30 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/14 09:16:23 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/19 23:40:58 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,19 @@ int			get_piece(void)
 int			get_map(void)
 {
 	char	*line;
+	char	**split_line;
 	t_fill	*fill;
 
 	fill = get_fill();
 	get_next_line(STDIN_FILENO, &line);
-	if (ft_strstr(line, "Plateau 15 17:") && (fill->plateau = (map_15())))
-	{
-		fill->size_map.x = 17;
-		fill->size_map.y = 15;
-	}
-	else if (ft_strstr(line, "Plateau 24 40:") && (fill->plateau = (map_24())))
-	{
-		fill->size_map.x = 40;
-		fill->size_map.y = 24;
-	}
-	else if (ft_strstr(line, "Plateau 100 99:") &&\
-	(fill->plateau = (map_100())))
-	{
-		fill->size_map.x = 99;
-		fill->size_map.y = 100;
-	}
-	else
-		fill->ret = 1;
+	split_line = ft_strsplit_whitespace(line);
 	ft_strdel(&line);
+	if (!split_line || !split_line[1] || !split_line[2])
+		return (fill->ret = 1);
+	fill->size_map.x = ft_atoi(split_line[2]);
+	fill->size_map.y = ft_atoi(split_line[1]);
+	strstr_free(split_line);
+	fill->plateau = read_map();
 	return (fill->ret);
 }
 

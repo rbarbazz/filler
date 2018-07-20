@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 13:25:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/06/29 16:43:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/19 23:35:04 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ t_fill			*get_fill(void);
 
 int				get_player_char(void);
 int				get_map(void);
-char			**map_15(void);
-char			**map_24(void);
-char			**map_100(void);
+char			**read_map(void);
 int				get_piece(void);
 
 /*

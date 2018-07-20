@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 16:36:18 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/14 09:05:55 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/19 23:42:44 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ int			algo(void)
 		ret = case_24();
 	else if (fill->size_map.y == 100)
 		ret = case_100();
+	else
+		ret = place_bot_right();
 	return (ret);
 }
