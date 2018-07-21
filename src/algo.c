@@ -6,50 +6,58 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/29 16:36:18 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/19 23:42:44 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/20 18:22:43 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static int	case_15(void)
+static int algo_bot_right(void)
 {
 	t_fill	*fill;
+	int		first_play;
 
 	fill = get_fill();
-	if (fill->player == 'O' && (fill->call % 2))
-		return (place_bot_right());
-	else if (fill->player == 'X' && (fill->call > 25))
-		return(place_bot_left());
-	else if (fill->player == 'X')
-		return(place_top_left());
-	return (place_top_right());
-}
-
-static int	case_24(void)
-{
-	t_fill	*fill;
-
-	fill = get_fill();
-	if (fill->player == 'O' && (fill->call < 25))
-		return (place_bot_right());
-	else if (fill->player == 'O')
-		return (place_top_right());
-	else if (fill->player == 'X' && (fill->call < 25))
+	first_play = fill->size_map.y;
+	if (fill->size_map.y < 20)
+		first_play = 25;
+	else if (fill->size_map.y > 95)
+		first_play = fill->size_map.y / 2;
+	if (fill->call < first_play)
 		return (place_top_left());
 	return (place_bot_left());
 }
 
-static int	case_100(void)
+static int algo_top_right(void)
 {
 	t_fill	*fill;
 
 	fill = get_fill();
-	if (fill->player == 'O' && (fill->call < 50))
-		return (place_top_left());
-	else if (fill->player == 'O')
+	if (fill->call < fill->size_map.y)
 		return (place_bot_left());
-	else if (fill->player == 'X' && (fill->call < 50))
+	return (place_top_left());
+}
+
+static int algo_bot_left(void)
+{
+	t_fill	*fill;
+
+	fill = get_fill();
+	if (fill->call % 2)
+		return (place_top_right());
+	return (place_bot_right());
+}
+
+static int algo_top_left(void)
+{
+	t_fill	*fill;
+	int		first_play;
+
+	fill = get_fill();
+	first_play = fill->size_map.y;
+	if (fill->size_map.y > 95)
+		first_play = fill->size_map.y / 2;
+	if (fill->call < first_play)
 		return (place_bot_right());
 	return (place_top_right());
 }
@@ -62,13 +70,13 @@ int			algo(void)
 	fill = get_fill();
 	ret = 1;
 	fill->call++;
-	if (fill->size_map.y == 15)
-		ret = case_15();
-	else if (fill->size_map.y == 24)
-		ret = case_24();
-	else if (fill->size_map.y == 100)
-		ret = case_100();
+	if (fill->player_pos.y < (fill->size_map.y / 2) && fill->player_pos.x < (fill->size_map.x / 2))
+		ret = algo_top_left();
+	else if (fill->player_pos.y >= (fill->size_map.y / 2) && fill->player_pos.x < (fill->size_map.x / 2))
+		ret = algo_bot_left();
+	else if (fill->player_pos.y < (fill->size_map.y / 2) && fill->player_pos.x >= (fill->size_map.x / 2))
+		ret = algo_top_right();
 	else
-		ret = place_bot_right();
+		ret = algo_bot_right();
 	return (ret);
 }
