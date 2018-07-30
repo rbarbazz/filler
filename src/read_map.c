@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 09:03:12 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/07/20 00:42:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/07/30 21:19:22 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void		get_player_pos(void)
 		fill->player_pos.x = 0;
 		while (fill->player_pos.x < fill->size_map.x)
 		{
-			if (fill->plateau[fill->player_pos.y][fill->player_pos.x] == fill->player)
+			if (fill->plateau[fill->player_pos.y][fill->player_pos.x] ==\
+				fill->player)
 				return ;
 			fill->player_pos.x++;
 		}
